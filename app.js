@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var urlencodedParser = bodyParser.urlencoded({extended: false});ù
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var app = express();
 
@@ -15,8 +15,8 @@ app.use('/home/', function(req, res) {
 })
 
 app.post('/home/confirmation/', urlencodedParser, function(req, res) {
-    if (req.body.confirm !== '') {
-        console.log(req.body.confirm);
+    if (req.body.confirmation !== '') {
+        console.log(req.body.confirmation);
     }
     res.redirect('/home');
 });
@@ -25,4 +25,4 @@ app.use(function(req, res) {
     res.redirect('/home')
 });
 
-app.listen(3389);
+app.listen(3390);
