@@ -5,7 +5,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var app = express();
 
-app.use('/home/confirmation/', function(req, res) {
+app.use('/home/confirm/', function(req, res) {
      res.render('confirmation.ejs');
 });
 
@@ -16,7 +16,9 @@ app.use('/home/', function(req, res) {
 
 app.post('/home/confirmation/', urlencodedParser, function(req, res) {
     if (req.body.confirmation !== '') {
-        console.log(req.body.confirmation);
+        var emails = [];
+        emails.push(req.body.confirmation);
+        console.log(emails[0]);
     }
     res.redirect('/home');
 });
