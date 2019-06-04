@@ -5,25 +5,20 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var app = express();
 
-app.use('/home/', function(req, res) {
+app.get('/home', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    res.send('Vous êtes à l\'accueil');
-})
+    res.send('Bienvenue sur la page d\'accueil');
+});
 
-app.use('/home/confirmation/', function(req, res) {
+app.get('home/confirmation', function() {
     res.render('confirmation.ejs');
 });
 
-app.post('/home/confirmation/ok', urlencodedParser, function(req, res) {
-    console.log('coucou');
+app.post('home/confirmation/on/', function(req, res) {
     if (req.body.confirmation !== '') {
         console.log(req.body.confirmation);
     }
     res.redirect('/home');
-});
-
-app.use(function(req, res) {
-    res.redirect('/home')
 });
 
 app.listen(3390);
